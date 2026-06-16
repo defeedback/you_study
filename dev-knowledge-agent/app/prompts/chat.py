@@ -24,7 +24,7 @@ SYSTEM_PROMPT = """
 4. 不确定的内容明确说明"我不确定"，不要编造
 """
 
-CHAT_PEOMPT = ChatPromptTemplate.from_messages([
+CHAT_PROMPT = ChatPromptTemplate.from_messages([
     ("system",SYSTEM_PROMPT),
     ("human","{user_message}")
 ])

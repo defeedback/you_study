@@ -2,7 +2,7 @@
 Author: DefeedBack
 Date: 2026-06-11 18:04:11
 LastEditors: DefeedBack
-LastEditTime: 2026-06-12 16:51:26
+LastEditTime: 2026-06-16 17:02:53
 Description: 
 
 Copyright (c) 2026 by 3102907235@qq.com, All Rights Reserved. 
@@ -24,7 +24,7 @@ router = APIRouter(prefix="/chat",tags=["聊天接口"])
     description="接收用户问题，调用大模型生成回答"
 )
 def chat(request: ChatRequest) -> ChatResponse:
-    logging.info("收到聊天请求: %s",request.message[:80])
+    logger.info("收到聊天请求: %s",request.message[:80])
 
     try:
         answer = generate_chat_answer(request.message)
