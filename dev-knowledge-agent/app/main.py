@@ -1,3 +1,12 @@
+'''
+Author: DefeedBack
+Date: 2026-06-11 17:24:28
+LastEditors: DefeedBack
+LastEditTime: 2026-06-25 23:20:46
+Description: 
+
+Copyright (c) 2026 by 3102907235@qq.com, All Rights Reserved. 
+'''
 """
 入口文件
 创建Fastapi 实例
@@ -8,11 +17,15 @@
 
 """
 
-from fastapi import FastAPI
+from fastapi import FastAPI,Request
+from fastapi.responses import JSONResponse
+
 from app.core.config import get_settings
 from app.core.logging import setup_logging
 from app.api import chat
 
+from app.core.exceptions import AppException
+from app.core.middleware import logging_middleware
 
 settings = get_settings()
 setup_logging(debug=settings.debug)
@@ -23,6 +36,21 @@ app = FastAPI(
     version=settings.app_version
 )
 
+# 注册中间件
+app.middleware("http")(logging_middleware)
+
+# 注册异常处理器
+@app.exception_handler(AppException)
+async def app_exception_haddler(request: Request, exc: AppException):
+    trace_id = getattr(request.state, "trace_id","unknown")
+    return JSONResponse(
+        status_code=exc.status_code,
+        content={
+            "code":exc.code,
+            "message":exc.message,
+            "trace_id":trace_id
+        }
+    )
 
 app.include_router(chat.router)
 
