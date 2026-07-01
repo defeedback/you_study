@@ -2,7 +2,7 @@
 Author: DefeedBack
 Date: 2026-06-11 18:07:00
 LastEditors: DefeedBack
-LastEditTime: 2026-06-16 17:40:55
+LastEditTime: 2026-06-29 17:20:51
 Description: 
 
 Copyright (c) 2026 by 3102907235@qq.com, All Rights Reserved. 
@@ -22,6 +22,9 @@ class Settings(BaseSettings):
     llm_model:str
     llm_temperature: float = 0.7
     llm_timeout: int = 60
+
+    embedding_base_url: str
+    embedding_model: str
     """
     BaseSettings 会依次从多个数据源加载配置
     1. 初始化参数

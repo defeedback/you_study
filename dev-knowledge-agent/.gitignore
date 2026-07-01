@@ -1,0 +1,18 @@
+# 环境变量(含 API Key,绝不能提交)
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# 虚拟环境
+.venv/
+
+# FAISS 索引与本地数据
+knowledge_base/index/
+
+# IDE
+.vscode/
+.idea/
