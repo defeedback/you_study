@@ -39,3 +39,9 @@ Thumbs.db
 *.log
 *.sqlite
 *.db
+
+# Claude Code 本地配置
+.claude/
+
+# 个人简历与面试材料（含敏感信息，不入库）
+docs/resume/
