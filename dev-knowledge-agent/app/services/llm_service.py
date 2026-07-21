@@ -2,7 +2,7 @@
 Author: DefeedBack
 Date: 2026-06-11 18:06:53
 LastEditors: DefeedBack
-LastEditTime: 2026-06-25 23:23:28
+LastEditTime: 2026-07-21 11:12:37
 Description: 
 
 Copyright (c) 2026 by 3102907235@qq.com, All Rights Reserved. 
@@ -74,3 +74,4 @@ def stream_chat_answer(messages:str) -> Iterator[str]:
 [0, 1, 2]
     """
     yield from chain.stream({"user_message":messages}) # 把可迭代对象逐项透传	
+
